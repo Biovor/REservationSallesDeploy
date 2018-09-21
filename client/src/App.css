@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 8%;
+
 }
 
 .App-logo {
@@ -25,4 +31,16 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.ListItemText{
+  width: 300px;
+}
+
+.Form {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.btnRight {
+  float: right;
 }

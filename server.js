@@ -1,20 +1,21 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
+const bodyParser = require("body-parser");
+const routes = require("./routes/routes.js");
 const port = process.env.PORT || 5000;
 
-// API calls
-app.get('/api/hello', (req, res) => {
-    res.send({ express: 'Hello From Express' });
-});
+routes(app);
+
 
 if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
-    app.use(express.static(path.join(__dirname, 'client/build')));
 
-    // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
+    app
+        .use(bodyParser.json())
+        .use(bodyParser.urlencoded({ extended: true }))
+        .use("/reservation", bodyParser)
+        .use(express.static(path.join(__dirname, 'client/build')))
+        .get('*', function(req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
 }
