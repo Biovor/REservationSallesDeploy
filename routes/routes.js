@@ -4,7 +4,7 @@ const jsonpatch = require('fast-json-patch');
 const appRouter = function (app) {
 
 
-    app.get("/", function (req, res) {
+    app.get("/reservation", function (req, res) {
 
         const rawdata = fs.readFileSync('rooms.json');
         const resaSalles = JSON.parse(rawdata);
@@ -13,7 +13,7 @@ const appRouter = function (app) {
         res.status(200).send(resaSalles);
     });
 
-    app.post("/", function (req, res) {
+    app.post("/reservation", function (req, res) {
 
         var document = fs.readFileSync('rooms.json');
 
